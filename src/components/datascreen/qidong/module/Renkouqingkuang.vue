@@ -1,0 +1,209 @@
+<template>
+  <div class="renkouqingkuangPanel">
+        <div class="titleDiv"><span>人口情况</span></div>
+        <div class="contentDiv">
+          <div ref="title" style="overflow: hidden;">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span class="contentText">全市总面积1208平方公里，下辖8个镇：汇龙镇、惠萍镇、东海镇、南阳镇、海复镇、合作镇、王鲍镇、吕四港镇，全市总人口119万，其中户籍人口110万人、流动人口9万人。</span>
+          </div>
+          <div ref="content" class="contentImgDiv">
+              <div class="charttitle">
+                <span style="width:5px;height:5px;border-radius:50%;background-color:rgb(17,255,255);display:block;margin-right:5px;"></span>
+                2014-2018年启东实际居住人口数量
+              </div>
+              <div class="chartytitle">(单位:万)</div>
+              <div ref="rkCharts" style="height:calc(100% - 18px);width:100%;"></div>
+          </div>
+        </div>
+  </div>
+</template>
+
+<script>
+import Constants from '@/constants/Constants'
+import { mapState } from 'vuex'
+import Vue from 'vue'
+export default {
+  name: 'Renkouqingkuang',
+  components:{},
+  data () {
+    return {
+      rkchart:null
+    }
+  },
+  computed:mapState({
+  }),
+  methods:{
+    createRkCharts(){
+      this.rkchart = this.echarts.init(this.$refs.rkCharts);
+      var option = {
+              tooltip : {
+                  trigger: 'axis',
+                  axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                      type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                  },
+                  top:'0px'
+              },
+              legend: {
+                  data: ['常住人口', '暂住人口'],
+                  textStyle:{
+                      color:'#fff'
+                  }
+              },
+              grid: {
+                  top:'25px',
+                  left: '0%',
+                  right: '0%',
+                  bottom: '0%',
+                  containLabel: true
+              },
+              yAxis:  {
+                  type: 'value',
+                  axisLabel :{
+                      color:'#fff'
+                  }
+              },
+              xAxis: {
+                  type: 'category',
+                  data: ['2014','2015','2016','2017','2018'],
+                  axisLabel :{
+                      color:'#fff'
+                  }
+              },
+              series: [
+                  {
+                      name: '常住人口',
+                      type: 'bar',
+                      stack: '总量',
+                      barWidth:'50%',
+                      itemStyle:{
+                          color:{
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0, color: 'rgba(4,6,80,.66)' // 0% 处的颜色
+                            }, {
+                                offset: 1, color: 'rgba(16, 71, 122, 0.66)' // 100% 处的颜色
+                            }],
+                            globalCoord: false // 缺省为 false
+                        },
+                      },
+                      label: {
+                          normal: {
+                              show: true,
+                              position: 'inside',
+                              fontSize:14,
+                              color:'yellow',
+                              fontFamily:'微软雅黑'
+                          }
+                      },
+                      data: [106, 108, 107, 109, 110]
+                  },
+                  {
+                      name: '暂住人口',
+                      type: 'bar',
+                      stack: '总量',
+                      barWidth:'50%',
+                      itemStyle:{
+                          color:{
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0, color: 'rgba(17,255,255,0.8)' // 0% 处的颜色
+                            }, {
+                                offset: 1, color: 'rgba(17,255,255,0.4)' // 100% 处的颜色
+                            }],
+                            globalCoord: false // 缺省为 false
+                        },
+                      },
+                      label: {
+                          normal: {
+                              show: true,
+                              position: 'inside',
+                              fontSize:14,
+                              color:'yellow',
+                              fontFamily:'微软雅黑'
+                          }
+                      },
+                      data: [8, 9, 8, 9, 9]
+                  }
+              ]
+          };
+        this.rkchart.setOption(option);
+    }
+  },
+  mounted(){
+    var titleHeight = this.$refs.title.scrollHeight;
+    $(this.$refs.content).height("calc(100% - "+titleHeight+"px)")
+    this.createRkCharts();
+    this.chartList.push(this.rkchart);
+  },
+  beforeDestroy(){
+  }
+}
+</script>
+
+<style scoped>
+.renkouqingkuangPanel{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.titleDiv{
+  height: 11.5385%;
+  color: rgb(17,255,255);
+  font-family: SimHei;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+  user-select: none;
+  margin-left: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.titleDiv span{
+  margin-left:15px;
+}
+.contentDiv{
+  width: 100%;
+  height: 88.4615%;
+  padding: 10px 5px 5px 5px;
+  overflow: hidden;
+  user-select: none;
+}
+.contentText{
+  color: rgb(130,192,251);
+  font-size: 12px;
+}
+.contentImgDiv{
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.charttitle{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  user-select: none;
+}
+.chartytitle{
+  position: absolute;
+  color: rgb(130,192,251);
+  font-size: 12px;
+  top:20px;
+  left: 0px;
+}
+
+</style>

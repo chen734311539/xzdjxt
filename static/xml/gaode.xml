@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer>
+	<layerType>gaode</layerType>
+	<urlPattern>1</urlPattern>
+	<defaultLevel>11</defaultLevel>
+	<minLevel>7</minLevel>
+	<maxLevel>15</maxLevel>
+    <center>
+		<x>120.9421</x>
+	    <y>30.5292</y>
+	</center>
+    <offset>
+  	  <x>0</x> 
+  	  <y>0</y> 
+    </offset> 
+	<fullExtent>
+		<xmin>-20037508.342787</xmin>
+		<ymin>-20037508.342787</ymin>
+		<xmax>20037508.342787</xmax>
+		<ymax>20037508.342787</ymax>
+	</fullExtent>
+	<initialExtent>
+		<xmin>-20037508.342787</xmin>
+		<ymin>-20037508.342787</ymin>
+		<xmax>20037508.342787</xmax>
+		<ymax>20037508.342787</ymax>
+	</initialExtent>
+	<tileInfo>
+		<dpi>90</dpi>
+		<origin>
+			<x>-20037508.342787</x>
+			<y>20037508.342787</y>
+		</origin>
+		<wkid>102100</wkid>
+		<width>256</width>
+		<height>256</height>
+			<lods>
+			<lod>
+				<level>7</level>
+				<resolution>1222.99245256249</resolution>
+				<scale>4622324.434309</scale>
+			</lod>
+			<lod>
+				<level>8</level>
+				<resolution>611.49622628138</resolution>
+				<scale>2311162.217155</scale>
+			</lod>
+			<lod>
+				<level>9</level>
+				<resolution>305.748113140558</resolution>
+				<scale>1155581.108577</scale>
+			</lod>
+			<lod>
+				<level>10</level>
+				<resolution>152.874056570411</resolution>
+				<scale>577790.554289</scale>
+			</lod>
+			<lod>
+				<level>11</level>
+				<resolution>76.4370282850732</resolution>
+				<scale>288895.277144</scale>
+			</lod>
+			<lod>
+				<level>12</level>
+				<resolution>38.2185141425366</resolution>
+				<scale>144447.638572</scale>
+			</lod>
+			<lod>
+				<level>13</level>
+				<resolution>19.1092570712683</resolution>
+				<scale>72223.819286</scale>
+			</lod>
+			<lod>
+				<level>14</level>
+				<resolution>9.55462853563415</resolution>
+				<scale>36111.909643</scale>
+			</lod>
+			<lod>
+				<level>15</level>
+				<resolution>4.77731426794937</resolution>
+				<scale>18055.954822</scale>
+			</lod>
+			<lod>
+				<level>16</level>
+				<resolution>2.38865713397468</resolution>
+				<scale>9027.977411</scale>
+			</lod>
+			<lod>
+				<level>17</level>
+				<resolution>1.19432856685505</resolution>
+				<scale>4513.988705</scale>
+			</lod>
+			<lod>
+				<level>18</level>
+				<resolution>0.597164283559817</resolution>
+				<scale>2256.994353</scale>
+			</lod>
+		</lods>
+	</tileInfo>
+	<transformData>    
+		<difference>  
+			<x>0</x>
+			<y>0</y>
+		</difference>
+
+<!-- 		<lat> -->
+<!-- 			<intercept>4.74918E-08</intercept> -->
+<!-- 			<variable1>5.40657E-08</variable1> -->
+<!-- 			<variable2>7.73788E-06</variable2> -->
+<!-- 		</lat> -->
+<!-- 		<lng> -->
+<!-- 			<intercept>-5.64918E-06</intercept> -->
+<!-- 			<variable1>2.46497E-06</variable1> -->
+<!-- 			<variable2>-3.10309E-06</variable2> -->
+<!-- 		</lng> -->
+<!-- 		<x> -->
+<!-- 			<intercept>7.65728585</intercept> -->
+<!-- 			<variable1>378579.8476</variable1> -->
+<!-- 			<variable2>253805.2872</variable2> -->
+<!-- 		</x> -->
+<!-- 		<y> -->
+<!-- 			<intercept>-0.074252849</intercept> -->
+<!-- 			<variable1>-2581.246535</variable1> -->
+<!-- 			<variable2>127209.9058</variable2> -->
+<!-- 		</y> -->
+
+		<x>
+			<intercept>40026808.6959788</intercept>
+			<variable1>111625.695532178</variable1>
+			<variable2>380.551302262288</variable2>
+		</x>
+		<y>
+			<intercept>-409227.135758605</intercept>
+			<variable1>156.384874857014</variable1>
+			<variable2>129768.029550911</variable2>
+		</y>
+		<lng>
+			<intercept>-358.54507218567</intercept>
+			<variable1>8.95765E-06</variable1>
+			<variable2>-2.62245E-08</variable2>
+		</lng>
+		<lat>
+			<intercept>3.583692653</intercept>
+			<variable1>-1.07404E-08</variable1>
+			<variable2>7.70581E-06</variable2>
+		</lat>
+	</transformData>
+</layer>			

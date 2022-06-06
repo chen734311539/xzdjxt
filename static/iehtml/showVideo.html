@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<script type="text/javascript">
+	window.onload = function() {
+		window.resizeTo(10, 10);
+		window.moveTo(4000, 4000);
+		var devid = window.location.search.substr(1);
+		//window.open("http://50.89.32.102/playweb/index_play.html?user=qidong@kedacom&password=123456aaa!&domainid=37a015da2cb244949bada6d9957fa851&devid="+devid+"&chnid=0&vsid=0&manu=kedacom&high=1&transmode=0&easymode=real","_blank","height=315,width=560,top=300,left=400,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no");
+		window
+				.open(
+						"video.html?" + devid,
+						"_blank",
+					"height=350,width=560,top=300,left=400,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no");
+		window.opener = null;
+		window.open("", "_self");
+		window.close();
+	}
+</script>
+</head>
+<body>
+</body>
+</html>

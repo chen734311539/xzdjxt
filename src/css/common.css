@@ -1,0 +1,401 @@
+html {
+    height:100%;
+}
+
+body {
+    height:100%;
+}
+/*测试样式**/
+.test{
+    width: 100px;
+    height: 100px;
+    background: red;
+}
+.flexc{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.flexr{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+/*菜单栏的子菜单窗口**/
+.header_menu_submenu ul{
+    min-width: 100px !important;
+}
+.header_menu_submenu ul li{
+    text-align: center !important;
+}
+
+/***滚动条设置***/
+.el-scrollbar{
+    height: 100%
+}
+.el-scrollbar .el-scrollbar__wrap {
+    overflow-x: hidden;
+    margin-right: -7px !important;
+}
+.el-scrollbar .el-scrollbar__thumb{/****设置背景颜色，不设置鼠标不点上去会隐藏***/
+    background-color: #b6f6ff !important;
+}
+.el-scrollbar .el-scrollbar__bar.is-horizontal{/***水平条隐藏****/
+    display:none;
+}
+
+/******弹出框modal设置************/
+/* 设置模态框相对定位位置 */
+.ivu-modal{
+    width: 0px !important;
+    margin: 0 0 0 0;
+    top:0px;
+    left:0px;
+}
+.ivu-modal .ivu-modal-content{
+    color: #b6f6ff;
+    /* border: 2px solid #b6f6ff; */
+    border-radius: 0px;
+    /* box-shadow: 0 0 5px 0#39393a; */
+    /* background:
+    url(../assets/modal/modal_footer_bg.png) no-repeat right bottom; */
+    /* box-shadow:inset 0 0 50px 0 rgba(22, 121, 154, .52); */
+    background:
+    url(./../assets/leftcontent/gaoguang_left.png)  no-repeat 0% 0%,
+    url(./../assets/leftcontent/gaoguang_right.png)  no-repeat 100% 100%,
+    url(./../assets/leftcontent/img_jiao_topleft.png)  no-repeat 0% 0%,
+    url(./../assets/leftcontent/img_jiao_topright.png)  no-repeat 100% 0%,
+    url(./../assets/leftcontent/img_jiao_botleft.png)  no-repeat 0% 100%,
+    url(./../assets/leftcontent/img_jiao_botright.png)  no-repeat 100% 100%;
+    background-color: rgba(12,56,111,0.9);
+}
+.ivu-modal .ivu-modal-content .ivu-modal-header{
+    border-bottom-color: #2e8cb8;
+    /* background:
+    url(../assets/modal/modal_header_bg.png) no-repeat left top; */
+}
+.ivu-modal .ivu-modal-content .ivu-modal-header .ivu-modal-header-inner{
+    color: #b6f6ff;
+}
+/* .ivu-modal .ivu-modal-content .ivu-modal-footer{
+    border-top-color: #b6f6ff;
+} */
+.ivu-modal-footer {
+    border: none;
+    padding: 10px 25px 20px 25px;
+    text-align: right;
+}
+.ivu-modal .ivu-modal-content .ivu-modal-footer .ivu-btn{
+    color: #b6f6ff !important;
+}
+.ivu-modal .ivu-modal-content .ivu-modal-footer .ivu-btn:hover{
+    background-color: #2d8cf0
+}
+.ivu-modal .ivu-modal-content .ivu-modal-close .ivu-icon{
+    color: #b6f6ff;
+}
+/***************modal close 修改*****************************/
+.hfx-modal-close{
+    height: 26px;
+    width: 26px;
+    background:
+    url(../assets/modal/modal_close.png) center no-repeat;
+}
+.hfx-modal-close:hover{
+    height: 26px;
+    width: 26px;
+    background:
+    url(../assets/modal/modal_close_hov.png) center no-repeat;
+}
+
+/***************弹出modal层级*****************************/
+/**视频播放**/
+.mp4Modal{
+    z-index: 2999 !important;
+}
+/**警情详情**/
+.jqdetailInfo{
+    z-index: 1999 !important;
+}
+.modal_index{
+    z-index: 1050 !important;
+}
+.modal_index_up{
+    z-index: 1070 !important;
+}
+.modal_index_up2{
+    z-index: 1090 !important;
+}
+.positionleft.ivu-modal-wrap .ivu-modal-content{
+    position:absolute;
+    left:440px;
+    top:146px;
+}
+.positionleft.ivu-modal-wrap .ivu-modal{
+    width:auto !important;
+    top:0px;
+}
+/***************上传时列表不显示*****************************/
+.ivu-upload .ivu-upload-list{
+    display: none;
+}
+
+/***************table*****************************/
+.ivu-table{
+    color: white;
+}
+.ivu-table .ivu-table-header tr th{
+    background: rgba(0, 0, 0, 1);
+}
+.ivu-table .ivu-table-body .ivu-table-row td{
+    background: rgba(0, 0, 0, 0.8);
+}
+.ivu-table .ivu-table-body tr:nth-child(2n) td{/**偶数行*/
+    background: rgba(0, 0, 0, 0.7);
+}
+.ivu-table .ivu-table-body .ivu-table-row.ivu-table-row-hover td{
+    background: rgba(0, 0, 0, 0.9);
+}
+.ivu-table .ivu-table-body tr:nth-child(2n).ivu-table-row-hover td{/**偶数行*/
+    background: rgba(0, 0, 0, 0.9);
+}
+.ivu-table .ivu-table-tip table tbody tr td span{
+    color: black;
+}
+
+/***************select 下拉选择*****************************/
+.ivu-select{
+    text-align: left;
+    color: white;
+}
+.ivu-select .ivu-select-selection{
+    background: black;
+}
+.ivu-select .ivu-select-selection i{/**箭头*/
+    color: white;
+}
+.ivu-select .ivu-select-selection .ivu-tag-checked{/**多选的tag*/
+    background: black;
+}
+.ivu-tag-checked span{/**多选的tag*/
+    color: white;
+}
+.ivu-select .ivu-select-selection input{
+    color: white;
+}
+.ivu-select .ivu-select-dropdown{
+    background: black;
+}
+.ivu-select .ivu-select-dropdown ul li{
+    color: white;
+}
+.ivu-select .ivu-select-dropdown ul li:hover{
+    background: rgba(255, 255, 255, 0.1);
+}
+.ivu-select .ivu-select-dropdown .ivu-select-dropdown-list .ivu-select-item-focus{
+    background: transparent;
+}
+.ivu-select .ivu-select-dropdown .ivu-select-dropdown-list .ivu-select-item-selected{
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/***************Collapse 折叠面板*****************************/
+.ivu-collapse{
+    background: transparent !important;
+}
+.ivu-collapse .ivu-collapse-content{
+    background: transparent !important;
+    color: #b6f6ff !important;
+}
+.ivu-collapse .ivu-collapse-header{
+    color:#b6f6ff !important;
+}
+/***************el-image*****************************/
+.el-icon-circle-close{
+    color: white;
+}
+
+
+/***************默认滚动条样式修改*****************************/
+*::-webkit-scrollbar {width:3px; height:3px; background-color:transparent;} /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+*::-webkit-scrollbar-track {background-color:transparent;  } /*定义滚动条轨道 内阴影+圆角*/
+*::-webkit-scrollbar-thumb {background-color:#b6f6ff; border-radius:6px;} /*定义滑块 内阴影+圆角*/
+.scrollbarHide::-webkit-scrollbar{display: none}
+.scrollbarShow::-webkit-scrollbar{display: block}
+
+/***************按钮变成手****************/
+.come-in-to-be-pointer{
+    cursor: pointer;
+}
+
+/***************特效****************/
+/* Bounce In 鼠标hover特效 */
+.hvr-bounce-in {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+  }
+.hvr-bounce-in:hover, .hvr-bounce-in:focus, .hvr-bounce-in:active {
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+    transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+
+/* Rectangle Out 特效2 移入放大 */
+.hvr-rectangle-out {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+.hvr-rectangle-out:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #2098d1;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+.hvr-rectangle-out:hover, .hvr-rectangle-out:focus, .hvr-rectangle-out:active {
+    color: white;
+}
+.hvr-rectangle-out:hover:before, .hvr-rectangle-out:focus:before, .hvr-rectangle-out:active:before {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+/***************系统背景颜色*****************************/
+.sysbgcolordark{
+    /* background-color: rgba(8,56,90,0.9) !important; */
+    background-color: rgba(12,56,111,0.9) !important;
+}
+
+.sysbgcolorlight{
+    background-color: rgba(12,56,111,0.9) !important;
+}
+
+/***************动态点测试动画样式*****************************/
+.pointcss,.pointcss::before,.pointcss::after{position: absolute;width: 3px; height: 3px; border-radius: 50%;content: ''; }
+.pointcss::before{animation: scale 2s infinite; }
+.pointcss::after{animation: scale2 2s infinite; }
+@keyframes scale{0%{ transform: scale(6); opacity:.9}100%{ transform: scale(12); opacity: 0;}}
+@keyframes scale2{0%{ transform: scale(6);opacity:.9;}100%{ transform: scale(24);opacity:0;}}
+
+
+.ivu-cascader .ivu-input{
+    background: #fff0;
+    border: 0px;
+    outline: 0px;
+    color: #fff;
+    border-radius: 0px;
+}
+
+.pointcss,.pointcss::before,.pointcss::after{
+/* 设置颜色 */
+background-color: red;
+/* background-color: rgba(241, 34, 30, .9); */
+}
+
+
+/***************动态点测试动画样式*****************************/
+.bkyjLayer,.bkyjLayer::before,.bkyjLayer::after{position: absolute;width: 3px; height: 3px; border-radius: 50%;content: ''; }
+.bkyjLayer::before{animation: scale 2s infinite; }
+.bkyjLayer::after{animation: scale2 2s infinite; }
+@keyframes scale{0%{ transform: scale(6); opacity:.9}100%{ transform: scale(12); opacity: 0;}}
+@keyframes scale2{0%{ transform: scale(6);opacity:.9;}100%{ transform: scale(24);opacity:0;}}
+
+.bkyjLayer,.bkyjLayer::before,.bkyjLayer::after{
+/* 设置颜色 */
+background-color: #ffa200;
+}
+
+/* 文字省略 */
+.text_ellipsis{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ssjl_tips{
+    position:absolute;
+    width: 72px;
+    height: 25px;
+    display:none;
+    background:white;
+    color:#292929;
+    font-size:12px;
+    font-family: '宋体';
+    border-radius:4px;
+    word-wrap:break-word;
+    line-height:25px;
+    opacity:0.6;
+    text-align:center;
+    overflow: hidden;
+    -webkit-line-clamp:1;
+     -webkit-box-orient: vertical;
+     padding:1px 3px;
+}
+.ssjl_tips_word{
+   line-height:25px !important;
+}
+
+.ybss_tips{
+    position: absolute;
+    width: 45px;
+    height: 20px;
+    background: #43dae3;
+    color: #1a3343;
+    font-size: 12px;
+    font-family: '宋体';
+    border-radius: 4px;
+    word-wrap: break-word;
+    line-height: 20px;
+    opacity: 0.8;
+    text-align: center;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.mapinfoleftContentHide{
+    position:absolute;
+    width: 13px;
+    height: 31px;
+    top: 50%;
+    cursor: pointer;
+    background:url(./../assets/leftcontent/leftcontent_hide.png)  center  no-repeat;
+    z-index: 2;
+}
+.mapinfoleftContentShow{
+    position:absolute;
+    width: 13px;
+    height: 31px;
+    top: 50%;
+    cursor: pointer;
+    left: 295px;
+    background:url(./../assets/leftcontent/leftcontent_show.png)  center  no-repeat;
+    z-index: 2;
+}

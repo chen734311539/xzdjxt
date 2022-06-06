@@ -1,0 +1,222 @@
+﻿<html>
+<head>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+	//全局变量
+	var devid = window.location.search.substr(1);
+	var m1;
+	var mcuip = "50.89.32.102";//124.165.231.67:800
+
+	var mcuUesr = "qidong@kedacom";
+	var mcuPwd = "123456aaa!";
+	var playId = 65535;
+	var idVoiceCall = 65535;
+	var windowId = 0;
+	// ocx句柄
+
+	var g_bInitMcuOcx = 0;
+
+	setTimeout(function() {
+			m1 = new OcxManager('mcuocx');
+			m1.InitMcuOcx();
+			mystart();
+		}, 200);
+
+	//检索插件有没有装
+	function OcxManager(elID) {
+		//登录信息
+		this.elementID = elID;
+		this.getLoginInfo = function() {
+			var loginInfo = "<TLoginInfo>" + "<strUser>" + mcuUesr
+					+ "</strUser>" + "<strPWD>" + mcuPwd + "</strPWD>"
+					+ "<strIP>" + mcuip + "</strIP>" + "</TLoginInfo>";
+			return loginInfo;
+		}
+
+		this.getChaninfo = function(domainid, puid, chan, src) {
+			var chanInfo = "<TDEVCHN>" + "<strDomainID>" + domainid
+					+ "</strDomainID>" + "<strDeviceID>" + puid
+					+ "</strDeviceID>" + "<strChn>" + chan + "</strChn>"
+					+ "<strSrc>" + src + "</strSrc>" + "</TDEVCHN>";
+			return chanInfo;
+		}
+
+		/*
+		  High: 0（清晰）/1（流畅）
+		 * recpos: 1（平台录像）/2（前端录像），实时浏览时忽略
+		 */
+		this.getStreamInfo = function(Manu, High, recpos) {
+			var streamInfo = "<TStream_Param>" + "<strServerIp>" + ""
+					+ "</strServerIp>" + "<strServerPort>" + ""
+					+ "</strServerPort>" + "<strManu>" + Manu + "</strManu>"
+					+ "<strHighDefinition>" + High + "</strHighDefinition>"
+					+ "<strRecPlace>" + recpos + "</strRecPlace>"
+					+ "</TStream_Param>";
+			return streamInfo;
+		}
+		
+
+		this.InitMcuOcx = function() {
+			var objMcuOcx = document.getElementById(this.elementID);
+			if (objMcuOcx) //&& g_bInitMcuOcx == 0   看是初始化一次还是每次使用都初始化  TODO
+			{
+				g_bInitMcuOcx = 1;
+				objMcuOcx.Init();
+				objMcuOcx.EnableFullScreenPTZ(1);
+				
+			}
+		}
+
+		//播放
+		this.startRealPlay = function(domainid, puid, chan, src, manu, high,
+				windowIndex) {
+			var objMcuOcx = document.getElementById(this.elementID);
+			var msg=document.getElementById("msg");
+			if (domainid == "" || puid == "") {
+				return;
+			}
+
+			var loginInfo = this.getLoginInfo();
+			var chanInfo = this.getChaninfo(domainid, puid, chan, src);
+			var streamInfo = this.getStreamInfo(manu, high, 1);
+			//console.log(loginInfo);
+			//console.log(chanInfo);
+			//console.log(streamInfo);
+			var objMcuOcx = document.getElementById(this.elementID);
+			objMcuOcx.SetWndStyle(1);
+			objMcuOcx.SetStreamPattern(1); //0 is tcp;  1 is udp
+			var vPlayid = objMcuOcx.StartRealPlay(loginInfo, chanInfo,
+					streamInfo, windowIndex);
+			if (vPlayid == -1) {
+				var nErrorCode = objMcuOcx.GetLastErrCode();
+				if (nErrorCode == 40001) //设备只有4K分辨率的情况就认为浏览失败
+				{
+					msg.innerHTML="<font color='#2d8cf0' size='2px'>浏览失败 ，不支持浏览仅有4k分辨率的设备！</font>";
+				} else {
+					msg.innerHTML="<font color='#2d8cf0' size='2px'>浏览失败，该设备无法播放！  错误码："+ nErrorCode+"</font>";
+				}
+			} else {
+				playId = vPlayid;
+				windowId = windowIndex;
+				var nRet = objMcuOcx.SetWndSoundEnable(windowIndex, 1);
+			}
+
+		}
+
+		
+		this.zoom = function() {
+			var objMcuOcx = document.getElementById(this.elementID);
+			objMcuOcx.PleaseZoom();
+
+		}
+
+		this.SetAudioVolume=function(e){
+			if (playId != 65535) {
+				var objMcuOcx = document.getElementById(this.elementID);
+				objMcuOcx.SetAudioVolume(0,e);
+			}
+		}
+	};
+
+	function mystart() {
+		if (playId == 65535) {
+			var domainid = "37a015da2cb244949bada6d9957fa851";
+			var puid = devid; //var puid = "dc7335b8c70643168d9088300d24f9bc@kedacom"; 
+			var chan = "0";
+			var src = "0";
+			var manu = "kedacom"; //kedacom
+			m1.startRealPlay(domainid, puid, chan, src, manu, 0, 0);
+		}
+	};
+	
+	function zoom() {
+		m1.zoom();
+	};
+	function volume(e){
+		m1.SetAudioVolume(e);
+	}
+</script>
+</head>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+.btn {
+width:70px;
+height:35px;
+border-width:0px;
+border-radious:10px;
+background:#2d8cf0;
+cursor:pointer;
+outline:none;
+font-family:Microsoft YaHei;
+color:white;
+font-size:17px;
+}
+. btn:hover{
+background:#5599FF;
+}
+
+#box{width: 105px;height: 10px;border: 1px solid #57a3f3;margin-top:12px;position: relative;}
+#box1{width: 100px;height: 10px;background: #2d8cf0;position: absolute;}
+#span1{height: 20px;width: 5px;left:100px;background: white;display: block;position: absolute;top: -5px;cursor: pointer}
+</style>
+<body>
+	<div id="id_playwindow" class="divplaywindow"
+		style="width: 100%; height: 90%">
+		<object id="mcuocx" name="name_mcuocx"
+			classid="clsid:24E9635B-FE64-47A0-B0E0-A76E0E06B3D0"
+			style="width: 100%; height: 100%"></object>
+			
+	</div>
+	<div style="width: 100%; height: 10%;background:#090909;">
+		<div style="width:70px;height:35px;margin-left:10px;float:left;">
+			<div id="box">
+				<div id="box1">
+					<span id="span1"></span>
+				</div>
+			</div>
+		</div>
+		<div style="width:280px;height:35px;margin-left:40px;float:left;line-height:35px">
+			<span id="msg"></span>
+		</div>
+		<div style="width:70px;height:35px;float:right;">
+			<input class="btn" type="button" value="全屏" onclick="zoom();"/>
+		</div>
+	</div>
+</body>
+<script >
+			var Span =document.getElementById("span1");
+			var Box =document.getElementById("box");
+			var Box1 =document.getElementById("box1");
+			Span.onmousedown=function(e){
+				var evt =e||event;
+				var x =evt.offsetX;
+				var y =evt.offsetY;
+				//console.log(x)
+				//console.log("Aa")
+				Box.onmousemove=function(e){
+					var evt =e||event;
+					Span.style.left=evt.clientX-Box.offsetLeft-x+"px";
+					if(evt.clientX-Box.offsetLeft-x<=0){
+						Span.style.left="0px";
+					}
+					if(evt.clientX-Box.offsetLeft-x>=100){
+						Span.style.left="100px";
+					}
+					Box1.style.width=Span.offsetLeft+"px";
+// 					console.log(Math.floor(Span.offsetLeft));
+					volume(Math.floor(Span.offsetLeft));	
+				}
+				document.onmouseup=function(){
+					//Box1.style.width=evt.offsetX+"px";
+					Box.onmousemove=null;
+				}
+			}
+		</script>
+</html>
